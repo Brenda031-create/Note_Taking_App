@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// src/routes/notes.ts — minimal test version
 const express_1 = require("express");
+const noteController_1 = require("../controllers/noteController");
 const router = (0, express_1.Router)();
-// One dummy route to prove the file works
-router.get('/test', (req, res) => {
-    res.json({ status: 'ok', message: 'Routes file is loaded and working' });
-});
+router.get('/', noteController_1.getNotes);
+router.post('/', noteController_1.createNote);
+router.get('/:id', noteController_1.getNoteById);
+router.put('/:id', noteController_1.updateNote);
+router.delete('/:id', noteController_1.deleteNote);
 exports.default = router;

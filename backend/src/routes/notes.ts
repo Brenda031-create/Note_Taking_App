@@ -1,11 +1,18 @@
-// src/routes/notes.ts — minimal test version
 import { Router } from 'express';
+import {
+	createNote,
+	deleteNote,
+	getNoteById,
+	getNotes,
+	updateNote,
+} from '../controllers/noteController';
 
 const router = Router();
 
-// One dummy route to prove the file works
-router.get('/test', (req, res) => {
-  res.json({ status: 'ok', message: 'Routes file is loaded and working' });
-});
+router.get('/', getNotes);
+router.post('/', createNote);
+router.get('/:id', getNoteById);
+router.put('/:id', updateNote);
+router.delete('/:id', deleteNote);
 
 export default router;
